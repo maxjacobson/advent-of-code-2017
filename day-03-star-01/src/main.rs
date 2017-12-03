@@ -13,60 +13,60 @@ fn coordinate_for(square: i32) -> Coordinate {
         if tracking_square >= square {
             if i % 2 == 0 {
                 // top left
-                let mut coordinate = ( (-(i/2) + 1), i/2 );
+                let mut coordinate = ((-(i / 2) + 1), i / 2);
 
                 for _ in 1..i {
                     if tracking_square == square {
-                        return coordinate
+                        return coordinate;
                     }
 
                     coordinate.0 += 1;
                     tracking_square -= 1;
 
                     if tracking_square == square {
-                        return coordinate
+                        return coordinate;
                     }
                 }
 
                 for _ in 1..i {
                     if tracking_square == square {
-                        return coordinate
+                        return coordinate;
                     }
 
                     coordinate.1 -= 1;
                     tracking_square -= 1;
 
                     if tracking_square == square {
-                        return coordinate
+                        return coordinate;
                     }
                 }
             } else {
                 // bottom right
-                let mut coordinate = ( ((i-1)/2), -(i-1)/2  );
+                let mut coordinate = (((i - 1) / 2), -(i - 1) / 2);
 
                 for _ in 1..i {
                     if tracking_square == square {
-                        return coordinate
+                        return coordinate;
                     }
 
                     coordinate.0 -= 1;
                     tracking_square -= 1;
 
                     if tracking_square == square {
-                        return coordinate
+                        return coordinate;
                     }
                 }
 
                 for _ in 1..i {
                     if tracking_square == square {
-                        return coordinate
+                        return coordinate;
                     }
 
                     coordinate.1 += 1;
                     tracking_square -= 1;
 
                     if tracking_square == square {
-                        return coordinate
+                        return coordinate;
                     }
                 }
             }
@@ -77,10 +77,7 @@ fn coordinate_for(square: i32) -> Coordinate {
 }
 
 fn count_steps(square: i32) -> i32 {
-    manhattan_distance(
-        &coordinate_for(square),
-        &coordinate_for(1),
-    )
+    manhattan_distance(&coordinate_for(square), &coordinate_for(1))
 }
 
 #[test]
@@ -106,7 +103,8 @@ fn example_four() {
 type Coordinate = (i32, i32);
 
 fn manhattan_distance(starting_position: &Coordinate, destination_position: &Coordinate) -> i32 {
-    (starting_position.0 - destination_position.0).abs() + (starting_position.1 - destination_position.1).abs()
+    (starting_position.0 - destination_position.0).abs() +
+        (starting_position.1 - destination_position.1).abs()
 }
 
 #[test]
