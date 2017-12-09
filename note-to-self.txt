@@ -1,0 +1,3 @@
+Idea: model the whole spiral as one long vec and use math to determine the coordinate or the neighbors
+
+No, actually just start at 0 and wend your way around ......... tracking and mutating a coordinate... well not sure if that works for part two which needs to refer back to other coordinates. Well it can maintain a history as it goes and use math to determine which previous values must be neighbors !
