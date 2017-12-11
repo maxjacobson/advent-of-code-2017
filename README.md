@@ -11,6 +11,21 @@ You can also run `cargo test` -- most of these should have some tests.
 I'm also generally recording my screen as I work on these.
 If curious, you can [check out the videos on YouTube](https://www.youtube.com/playlist?list=PLtKaBKjqBNUf1KmmCUyuVITQ-YoyLZpef).
 
+## Why record videos?
+
+Mainly to help me focus. It's kind of like pair programming solo.
+
+## Why share videos?
+
+Well, if I don't share it, then I don't have to focus as much, because I know I'm just going to delete it so it doesn't matter if I pause to check twitter in the middle.
+
+But also, when I'm learning, I _love_ watching videos of other people coding.
+Ideally they're not super long, if that can be avoided.
+But just seeing someone else work shows me in a really concrete way that the thing they're doing is possible for me to do, too.
+I just need to do what they do.
+Hopefully the narration will illuminate _why_ they do what they do, but that's gravy.
+So I share in case it can help someone else.
+
 ## How to record videos (on macOS)
 
 1. Scale down resolution so the video won't be enormous
