@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 fn main() {
     let puzzle_input = include_str!("../puzzle_input.txt");
-    println!("{}", largest_value_after_processing(puzzle_input));
+    println!("{}", largest_value_during_processing(puzzle_input));
 }
 
 #[derive(Debug)]
@@ -80,25 +80,34 @@ impl Instruction {
 #[derive(Debug)]
 struct Computer {
     registers: HashMap<String, i32>,
+    largest_value: i32,
 }
 
 impl Computer {
     fn new() -> Computer {
-        Computer { registers: HashMap::new() }
+        Computer { registers: HashMap::new(), largest_value: 0 }
     }
 
     fn execute(&mut self, instructions: Vec<Instruction>) {
         instructions.iter().for_each(|instruction| {
             let condition_result = self.condition_is_true(&instruction.condition);
-            let register_value = self.registers
-                .entry(instruction.register.to_owned())
-                .or_insert(0);
 
-            if condition_result {
-                match instruction.change {
-                    Change::Increment => *register_value += instruction.change_amount,
-                    Change::Decrement => *register_value -= instruction.change_amount,
+            {
+                let register_value = self.registers
+                    .entry(instruction.register.to_owned())
+                    .or_insert(0);
+
+                if condition_result {
+                    match instruction.change {
+                        Change::Increment => *register_value += instruction.change_amount,
+                        Change::Decrement => *register_value -= instruction.change_amount,
+                    }
                 }
+            }
+
+            let current_largest_value = self.largest_value();
+            if current_largest_value > self.largest_value {
+                self.largest_value = current_largest_value;
             }
         })
     }
@@ -126,17 +135,17 @@ impl Computer {
     }
 }
 
-fn largest_value_after_processing(input: &str) -> i32 {
+fn largest_value_during_processing(input: &str) -> i32 {
     let instructions: Vec<Instruction> =
         input.lines().map(|line| Instruction::from(line)).collect();
     let mut computer = Computer::new();
     computer.execute(instructions);
 
-    computer.largest_value()
+    computer.largest_value
 }
 
 #[test]
 fn example() {
     let puzzle_input = include_str!("../example.txt");
-    assert_eq!(1, largest_value_after_processing(puzzle_input));
+    assert_eq!(10, largest_value_during_processing(puzzle_input));
 }
