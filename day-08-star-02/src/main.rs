@@ -85,7 +85,10 @@ struct Computer {
 
 impl Computer {
     fn new() -> Computer {
-        Computer { registers: HashMap::new(), largest_value: 0 }
+        Computer {
+            registers: HashMap::new(),
+            largest_value: 0,
+        }
     }
 
     fn execute(&mut self, instructions: Vec<Instruction>) {
